@@ -10,7 +10,7 @@ project-url: https://github.com/starelectronic/WOH-01
 ---
 
 <p align="center">
-  <img src="//VOC_sensor_front.jpg">
+  <img src="images/DSC_0828.jpg">
   </p>
 
 # WOH-01
