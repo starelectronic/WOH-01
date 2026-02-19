@@ -29,3 +29,14 @@ Technical parameters of WOH-01:
 - Data update frequency – every 30s
 - Dimensions – Φ36x16mm
 - Magnetic holder
+
+### Data read from electricity meter
+
+<p align="center">
+  <img src="images/WOH01_screenshot.jpg">
+  </p>
+
+  - [ESPHome Configuration File](energy-meter.yaml)
+
+### Purchase:
+For purchasing information, please visit our [Product Page](https://www.soselectronic.com/sk-sk/products/sos-electronic/woh-01-432822).
