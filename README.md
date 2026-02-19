@@ -1,3 +1,18 @@
+---
+title: esphome-WOH-01
+date-published: 2026-01-28 14:22:59 +0100
+type: sensor
+standard: global
+board: esp32
+difficulty: 1
+made-for-esphome: false
+project-url: https://github.com/starelectronic/WOH-01
+---
+
+<p align="center">
+  <img src="//VOC_sensor_front.jpg">
+  </p>
+
 # WOH-01
 Optical WiFi reader with ESPHome
 Optical WiFi head for IEC62056-21 compatible electrical meter with ESPHome WOH-01
