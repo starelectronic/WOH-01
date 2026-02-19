@@ -1,0 +1,193 @@
+substitutions:
+  name: esphome-web-b452f0
+  friendly_name: ESP32 Energy meter b452f0
+
+esphome:
+  name: ${name}
+  friendly_name: ${friendly_name}
+  min_version: 2024.6.0
+  name_add_mac_suffix: false
+  compile_process_limit: 1
+  project:
+    name: esphome.web
+    version: dev
+
+esp32:
+  board: esp32dev
+  framework:
+    type: esp-idf
+
+# Enable logging
+logger:
+
+# Enable Home Assistant API
+api:
+
+# Allow Over-The-Air updates
+ota:
+- platform: esphome
+- platform: web_server
+
+# Allow provisioning Wi-Fi via serial
+improv_serial:
+
+wifi:
+  # Set up a wifi access point
+  ap: {}
+
+# In combination with the `ap` this allows the user
+# to provision wifi credentials to the device via WiFi AP.
+# captive_portal:
+
+dashboard_import:
+  package_import_url: github://esphome/example-configs/esphome-web/esp32.yaml@main
+  import_full_config: true
+
+# Sets up Bluetooth LE (Only on ESP32) to allow the user
+# to provision wifi credentials to the device.
+esp32_improv:
+  authorizer: none
+
+# To have a "next url" for improv serial
+web_server:
+
+external_components:
+    # IEC62056 component
+    - source: github://aquaticus/esphome-iec62056
+
+# Example UART configuration entry
+uart:
+  rx_pin: GPIO22
+  tx_pin: GPIO21
+  baud_rate: 9600
+  data_bits: 7
+  parity: EVEN
+  stop_bits: 1
+
+# Example platform configuration entry for bidirectional communication
+iec62056:
+  update_interval: 90s
+  baud_rate_max: 9600
+  battery_meter: False
+
+# Example sensor configuration entries
+sensor:
+  - platform: iec62056
+    obis: 1.8.0
+    name: Active energy total
+    unit_of_measurement: kWh
+    accuracy_decimals: 0
+    device_class: energy
+    state_class: total_increasing
+
+  - platform: iec62056
+    obis: 1.8.1
+    name: Positive active energy (A+) in tariff T1
+    unit_of_measurement: kWh
+    accuracy_decimals: 0
+    device_class: energy
+    state_class: total_increasing
+
+  - platform: iec62056
+    obis: 1.8.2
+    name: Positive active energy (A+) in tariff T2
+    unit_of_measurement: kWh
+    accuracy_decimals: 0
+    device_class: energy
+    state_class: total_increasing
+
+  - platform: iec62056
+    obis: 2.8.0
+    name: Negative active energy (A+) total
+    unit_of_measurement: kWh
+    accuracy_decimals: 0
+    device_class: energy
+    state_class: total_increasing
+
+  - platform: iec62056
+    obis: 2.8.1
+    name: Negative active energy (A+) in tariff T1
+    unit_of_measurement: kWh
+    accuracy_decimals: 0
+    device_class: energy
+    state_class: total_increasing
+
+  - platform: iec62056
+    obis: 2.8.2
+    name: Negative active energy (A+) in tariff T2
+    unit_of_measurement: kWh
+    accuracy_decimals: 0
+    device_class: energy
+    state_class: total_increasing
+
+  - platform: iec62056
+    name: Current in phase L1
+    obis: 31.7.0
+    unit_of_measurement: A
+    accuracy_decimals: 2
+    device_class: current
+    state_class: measurement
+
+  - platform: iec62056
+    name: Voltage in phase L1
+    obis: 32.7.0
+    unit_of_measurement: V
+    accuracy_decimals: 1
+    device_class: voltage
+    state_class: measurement
+
+  - platform: iec62056
+    name: Active power L1
+    obis: 21.7.0
+    unit_of_measurement: kW
+    accuracy_decimals: 3
+    device_class: energy
+    state_class: measurement
+
+  - platform: iec62056
+    name: Current in phase L2
+    obis: 51.7.0
+    unit_of_measurement: A
+    accuracy_decimals: 2
+    device_class: current
+    state_class: measurement
+
+  - platform: iec62056
+    name: Voltage in phase L2
+    obis: 52.7.0
+    unit_of_measurement: V
+    accuracy_decimals: 1
+    device_class: voltage
+    state_class: measurement
+
+  - platform: iec62056
+    name: Active power L2
+    obis: 41.7.0
+    unit_of_measurement: kW
+    accuracy_decimals: 3
+    device_class: energy
+    state_class: measurement
+
+  - platform: iec62056
+    name: Current in phase L3
+    obis: 71.7.0
+    unit_of_measurement: A
+    accuracy_decimals: 2
+    device_class: current
+    state_class: measurement
+
+  - platform: iec62056
+    name: Voltage in phase L3
+    obis: 72.7.0
+    unit_of_measurement: V
+    accuracy_decimals: 1
+    device_class: voltage
+    state_class: measurement
+
+  - platform: iec62056
+    name: Active power L3
+    obis: 61.7.0
+    unit_of_measurement: kW
+    accuracy_decimals: 3
+    device_class: energy
+    state_class: measurement
